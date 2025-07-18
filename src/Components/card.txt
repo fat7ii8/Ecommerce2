@@ -1,0 +1,70 @@
+// import axios from "axios";
+// import React, { useEffect, useState } from "react";
+// import { ShoppingCart, Eye, Pause } from "lucide-react";
+
+// export default function Card() {
+//   const [products, setProducts] = useState(null);
+//   async function getProducts() {
+//     const options = {
+//       url: "https://ecommerce.routemisr.com/api/v1/products",
+//       method: "get",
+//     };
+//     const { data } = await axios.request(options);
+//     console.log(data);
+//     setProducts(data.data);
+//   }
+//   useEffect(() => {
+//     getProducts();
+//   }, []);
+//   return (
+//     <>
+//       <div className="container">
+//         <h2 className="text-xl font-semibold mb-3 ">Shop Popular Products :</h2>
+//         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-6 xl:grid-col-4 gap-4 bg-white mt-8 mb-8">
+//           {products?.map((product) => (
+//             <div
+//               key={product._id}
+//               className="space-y-3 relative shadow-md p-1 hover:cursor-pointer group"
+//             >
+//               <div className="relative">
+//                 <img src={product.imageCover} alt={product.title} />
+//                 <div className="absolute flex justify-center items-center gap-3 inset-0 bg-mainColor/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+//                   <ShoppingCart className="IconStyle" />
+//                   <Pause className="IconStyle" />
+//                   <Eye className="IconStyle" />
+//                 </div>
+//               </div>
+//               <h3 className="text-sm text-mainColor">
+//                 {product.category.name}
+//               </h3>
+//               <h2 className="">{product.title.split(" ", 3).join(" ")}</h2>
+//               <div className="flex justify-between items-center">
+//                 {product.priceAfterDiscount ? (
+//                   <h3
+//                     className="text-red-500/60
+//                    line-through"
+//                   >
+//                     {product.price} EGP
+//                   </h3>
+//                 ) : (
+//                   <h3>{product.price} EGP</h3>
+//                 )}
+//                 <span>
+//                   <i className="fas fa-star text-yellow-400"></i>{" "}
+//                   {product.ratingsAverage}
+//                 </span>
+//                 {product.priceAfterDiscount ? (
+//                   <span className="bg-mainColor/60 absolute top-3 right-3  py-1 px-1 rounded text-white ">
+//                     sale {product.priceAfterDiscount}
+//                   </span>
+//                 ) : (
+//                   ""
+//                 )}
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </>
+//   );
+// }

@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@import "react-image-gallery/styles/css/image-gallery.css";
+@import 'animate.css';
+
+body {
+  font-family: 'Encode Sans Expanded', sans-serif;
+}
+
+@theme {
+  --color-mainColor: #0aad0a;
+}
+
+@utility container {
+  margin: auto;
+
+
+  @media (width >=80rem) {
+    max-width: 75rem;
+  }
+
+  /* @media (width >=450rem) {
+    max-width: 80rem;
+  } */
+}
+
+.active {
+  font-weight: 900;
+}
+
+@layer components {
+  .input {
+    @apply bg-white rounded-md grow py-1 focus:outline-none px-2
+  }
+
+  .btn {
+    @apply bg-mainColor text-white px-3 py-1 rounded-md cursor-pointer
+  }
+
+  .IconStyle {
+    @apply w-8 h-8 text-xl bg-mainColor text-white p-2 rounded-full hover:bg-white hover:text-mainColor
+  }
+}
