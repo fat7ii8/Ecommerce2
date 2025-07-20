@@ -1,8 +1,1 @@
-{
-  "rewrites": [
-    {
-      "source": "/((?!.*\\..*).*)",  // ignore paths that contain a file extension
-      "destination": "/"
-    }
-  ]
-}
+{"rewrites": [{ "source": "/((?!.*\\..*).*)", "destination": "/" }]}
