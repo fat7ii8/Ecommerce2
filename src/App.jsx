@@ -105,7 +105,7 @@ const routes = createBrowserRouter([
       },
     ],
   },
-], { basename: '/Ecommerce2' });
+]);
 
 const x = new QueryClient();
 function App() {
