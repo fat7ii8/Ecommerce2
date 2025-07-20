@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import Home from "./Pages/Home/Home";
@@ -22,50 +22,45 @@ import Category from "./Pages/Category/Category";
 import WishList from "./Pages/WishList/WishList";
 import WishListProvider from "./Components/Context/WishList.context";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import NotFound from "./Pages/NotFound/NotFound"; // You’ll need to create this component
+import NotFound from "./Pages/NotFound/NotFound"; // Optional fallback page
 
-const routes = createBrowserRouter(
-  [
-    {
-      path: "",
-      element: (
-        <ProtectedRoutes>
-          <Layout />
-        </ProtectedRoutes>
-      ),
-      children: [
-        { index: true, element: <Home /> },
-        { path: "home", element: <Home /> },
-        { path: "cart", element: <Cart /> },
-        { path: "product/:id", element: <ProductDetails /> },
-        { path: "checkout", element: <Checkout /> },
-        { path: "allorders", element: <Orders /> },
-        { path: "brands", element: <Brands /> },
-        { path: "products", element: <Productss /> },
-        { path: "categories", element: <Category /> },
-        { path: "wishlist", element: <WishList /> },
-      ],
-    },
-    {
-      path: "",
-      element: (
-        <GardRouteForLogin>
-          <Layout />
-        </GardRouteForLogin>
-      ),
-      children: [
-        { path: "login", element: <Login /> },
-        { path: "register", element: <Register /> },
-        { path: "writeemail", element: <WriteEmail /> },
-        { path: "recivecode", element: <ReciveCode /> },
-        { path: "resetpassword", element: <ResetPassword /> },
-      ],
-    },
-  ],
+const routes = createHashRouter([
   {
-    basename: "/Ecommerce2",
-  }
-);
+    path: "/",
+    element: (
+      <ProtectedRoutes>
+        <Layout />
+      </ProtectedRoutes>
+    ),
+    children: [
+      { index: true, element: <Home /> },
+      { path: "home", element: <Home /> },
+      { path: "cart", element: <Cart /> },
+      { path: "product/:id", element: <ProductDetails /> },
+      { path: "checkout", element: <Checkout /> },
+      { path: "allorders", element: <Orders /> },
+      { path: "brands", element: <Brands /> },
+      { path: "products", element: <Productss /> },
+      { path: "categories", element: <Category /> },
+      { path: "wishlist", element: <WishList /> },
+    ],
+  },
+  {
+    path: "/",
+    element: (
+      <GardRouteForLogin>
+        <Layout />
+      </GardRouteForLogin>
+    ),
+    children: [
+      { path: "login", element: <Login /> },
+      { path: "register", element: <Register /> },
+      { path: "writeemail", element: <WriteEmail /> },
+      { path: "recivecode", element: <ReciveCode /> },
+      { path: "resetpassword", element: <ResetPassword /> },
+    ],
+  },
+]);
 
 const queryClient = new QueryClient();
 
@@ -82,7 +77,6 @@ function App() {
           </BrandProvider>
         </WishListProvider>
       </TokenProvider>
-      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );
 }
